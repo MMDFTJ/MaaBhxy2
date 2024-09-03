@@ -1,4 +1,4 @@
-# MAABhxy
+# MAABhxy2
 
 基于MAA全新架构的崩崩（崩坏学园2）小助手，图像技术 + 模拟控制，解放双手！由 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 强力驱动！~~纯python（雾）~~
 
@@ -9,7 +9,7 @@
 * ~~启动游戏~~
 * 领取/派遣使魔
 * 垃圾屋刷新，
-* 礼包商店的零时之种购买（应该不会出错买错别的礼包，出bug买错了一律不管）
+* 礼包商店的零时之种购买（应该不会出错买错别的礼包，出bug买错了一律不负责）
 * 自动刷多元裂缝，
 * 自动刷崩科校活，领使魔碎片
 * 领取社团体力
@@ -27,6 +27,10 @@
 
 * **AEZAKMI**有几率卡住，卡住就手动跑一下叭，过完图就正常了（
 
+## 前置说明
+Q:会不会检测到后封号？
+A:不知道...是通过adb模拟点击的，**用别怕，怕别用**(雾
+
 ## 使用说明
 
 **先打开模拟器，分辨率设置为1280*720（重要），后面的操作都是基于已经打开模拟器并正常运行**
@@ -39,11 +43,11 @@
 ### 初始化
 
 打开游戏，进到下面的界面
-![avatar]([https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png])
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E6%B4%BB%E5%8A%A8%E7%95%8C%E9%9D%A2.png)
 用截图工具截图当前的想要刷的活动
-![avatar]([https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png])
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E6%B4%BB%E5%8A%A8%E7%95%8C%E9%9D%A2%E6%88%AA%E5%9B%BE.png)
 回到首页
-![avatar]([https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png])
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E9%A6%96%E9%A1%B5.png)
 
 ### 配装选择
 
@@ -53,9 +57,9 @@
 衣服：可选幻兔*2，或者战车(拆崩科校活的障碍物)+随便一件（前提是徽章有能对敌人造成伤害的）
 徽章：海底秘辛或者与你相遇，能对敌人造成伤害还可以拆崩科校活的障碍物
 最低最低配：随便一件衣服+愿望杯+海底秘辛或者与你相遇
-![avatar]([https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png])
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E6%9C%80%E4%BD%8E%E9%85%8D%E7%BD%AE.png)
 例子
-![avatar]([https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png])
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E6%AD%A3%E5%B8%B8%E9%85%8D%E7%BD%AE.png)
 
 **点开脚本前需要手动将套装换成自动套！**
 
@@ -64,7 +68,7 @@
 ### 启动！
 
 进入首页
-![avatar]([https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png])
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E9%A6%96%E9%A1%B5.png)
 双击main.exe，按照提示选，回车，
 
 ## 开发相关
