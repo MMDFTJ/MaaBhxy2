@@ -1,0 +1,817 @@
+{
+    "电池": {
+        "action": "Click",
+        "target": [
+            145,
+            522,
+            0,
+            0
+        ]
+    },
+    "测试": {
+        "recognition": "OCR",
+        "expected": "测试",
+        "action": "Click",
+        "timeout": 20000
+    },
+    "进入游戏": {
+        "recognition": "OCR",
+        "expected": "崩坏学园2",
+        "action": "Custom",
+        "custom_action": "MyAct"
+    },
+    "进入": {
+        "recognition": "OCR",
+        "expected": "纯白女神",
+        "action": "Click",
+        "timeout": 3000,
+        "target": [
+            970,
+            286,
+            0,
+            0
+        ]
+    },
+    "抚摸屏幕继续": {
+        "recognition": "OCR",
+        "expected": "抚摸屏幕继续",
+        "action": "Click",
+        "post_delay": 5000
+    },
+    "领取月卡": {
+        "recognition": "OCR",
+        "expected": "月卡礼包剩余",
+        "action": "Click",
+        "timeout": 5000,
+        "post_delay": 2000,
+        "next": [
+            "领取月卡"
+        ]
+    },
+    "每日签到": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "action": "Click",
+        "timeout": 5000,
+        "post_delay": 5000,
+        "target": [
+            955,
+            507,
+            0,
+            0
+        ]
+    },
+    "前往": {
+        "recognition": "OCR",
+        "expected": "前往",
+        "action": "Click",
+        "timeout": 5000,
+        "post_delay": 5000,
+        "target": [
+            988,
+            202,
+            0,
+            0
+        ]
+    },
+    "确定": {
+        "recognition": "TemplateMatch",
+        "template": "确定图标.png",
+        "action": "Click",
+        "timeout": 5000,
+        "post_delay": 6000
+    },
+    "确定文字版": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 6000
+    },
+    "确认": {
+        "recognition": "OCR",
+        "expected": "确认",
+        "action": "Click",
+        "timeout": 5000
+    },
+    "购买": {
+        "recognition": "TemplateMatch",
+        "action": "Click",
+        "template": "购买.png",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "关闭公告": {
+        "recognition": "OCR",
+        "expected": "活动公告",
+        "action": "Click",
+        "post_delay": 5000,
+        "timeout": 5000,
+        "target": [
+            1140,
+            90,
+            0,
+            0
+        ]
+    },
+    "关闭活动连登福利": {
+        "recognition": "OCR",
+        "expected": "剩余时间",
+        "action": "Custom",
+        "custom_action": "MyAct"
+    },
+    "进入任务": {
+        "recognition": "TemplateMatch",
+        "template": "任务图标.png",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000,
+        "roi": [
+            15,
+            130,
+            71,
+            73
+        ]
+    },
+    "点击存在感": {
+        "recognition": "OCR",
+        "expected": "存在感",
+        "action": "Click",
+        "post_delay": 1000,
+        "timeout": 3000
+    },
+    "共鸣之力": {
+        "recognition": "OCR",
+        "action": "Click",
+        "expected": "共鸣之力",
+        "timeout": 3000,
+        "post_delay": 1000,
+        "target_offset": [
+            608,
+            55,
+            37,
+            10
+        ]
+    },
+    "战力补强": {
+        "recognition": "OCR",
+        "action": "Click",
+        "expected": "战力补强",
+        "timeout": 3000,
+        "post_delay": 1000,
+        "target_offset": [
+            608,
+            55,
+            37,
+            10
+        ]
+    },
+    "火线救援": {
+        "recognition": "OCR",
+        "action": "Click",
+        "expected": "火线救援",
+        "timeout": 3000,
+        "post_delay": 1000,
+        "target_offset": [
+            608,
+            55,
+            37,
+            10
+        ]
+    },
+    "崩科校活": {
+        "recognition": "OCR",
+        "action": "Click",
+        "expected": "^崩科校活$",
+        "timeout": 3000,
+        "post_delay": 1000,
+        "target_offset": [
+            608,
+            55,
+            37,
+            10
+        ]
+    },
+    "实验楼": {
+        "recognition": "OCR",
+        "expected": "实验楼",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000,
+        "roi": [
+            519,
+            676,
+            98,
+            42
+        ],
+        "target_offset": [
+            0,
+            -50,
+            0,
+            0
+        ]
+    },
+    "领取收益": {
+        "recognition": "OCR",
+        "expected": "领取收益",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "获得": {
+        "recognition": "OCR",
+        "expected": "获得",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "x": {
+        "recognition": "TemplateMatch",
+        "template": "x.png",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "社交": {
+        "recognition": "OCR",
+        "expected": "社交",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "我的社团": {
+        "recognition": "OCR",
+        "expected": "我的社团",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "可领": {
+        "recognition": "OCR",
+        "expected": "可领",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "不可领": {
+        "recognition": "OCR",
+        "expected": "不可领",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "领取": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "下边往上拉": {
+        "action": "Swipe",
+        "post_delay": 2000,
+        "begin": [
+            191,
+            614,
+            1089,
+            106
+        ],
+        "end": [
+            191,
+            363,
+            1089,
+            357
+        ]
+    },
+    "点击一键领取": {
+        "recognition": "TemplateMatch",
+        "template": "一键领取.png",
+        "action": "Click",
+        "timeout": 3000
+    },
+    "点击使魔探险": {
+        "recognition": "OCR",
+        "expected": "使魔探险",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "点击领取使魔探险奖励": {
+        "recognition": "OCR",
+        "expected": "点击领取奖励",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "派遣使魔探险": {
+        "recognition": "OCR",
+        "expected": "点击选择使魔",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000,
+        "next": [
+            "一键派遣使魔"
+        ]
+    },
+    "一键派遣使魔": {
+        "recognition": "TemplateMatch",
+        "template": "一键派遣.png",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "使魔出发"
+        ]
+    },
+    "使魔出发": {
+        "recognition": "OCR",
+        "expected": "出发",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "商店": {
+        "recognition": "TemplateMatch",
+        "template": "./商店.png",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "进入崩坏屋": {
+        "recognition": "OCR",
+        "expected": "崩坏屋",
+        "action": "Click",
+        "post_delay": 1000
+    },
+    "共鸣屋": {
+        "recognition": "OCR",
+        "expected": "共鸣屋",
+        "action": "Click",
+        "post_delay": 1000
+    },
+    "刷新共鸣屋和购买零时之种": {
+        "action": "Click",
+        "post_delay": 1000,
+        "target": [
+            1088,
+            155,
+            0,
+            0
+        ]
+    },
+    "从共鸣屋点击箭头返回": {
+        "recognition": "TemplateMatch",
+        "template": "返回箭头.png",
+        "action": "Click",
+        "post_delay": 1000
+    },
+    "点击礼包商店": {
+        "recognition": "OCR",
+        "expected": "礼包商店",
+        "action": "Click",
+        "post_delay": 1000
+    },
+    "吼美礼包": {
+        "recognition": "OCR",
+        "expected": "吼美礼包",
+        "action": "Click",
+        "post_delay": 1000
+    },
+    "滚动到下面": {
+        "action": "Swipe",
+        "timeout": 3000,
+        "begin": [
+            678,
+            626,
+            602,
+            94
+        ],
+        "end": [
+            678,
+            224,
+            602,
+            76
+        ]
+    },
+    "点击零时馈礼": {
+        "recognition": "TemplateMatch",
+        "template": "零时之种.png",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 3000
+    },
+    "点击是否购买零时馈礼": {
+        "recognition": "OCR",
+        "expected": "是否购买零时馈礼",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "进入战斗": {
+        "recognition": "OCR",
+        "expected": "战斗",
+        "action": "Click",
+        "post_delay": 1000
+    },
+    "进入首页": {
+        "recognition": "OCR",
+        "expected": "首页",
+        "action": "Click",
+        "post_delay": 1000
+    },
+    "使用双倍券": {
+        "recognition": "OCR",
+        "expected": "使用双倍券",
+        "action": "Click"
+    },
+    "进入多元裂缝": {
+        "recognition": "OCR",
+        "expected": "多元裂缝",
+        "timeout": 3000,
+        "action": "Click",
+        "post_delay": 1000
+    },
+    "右边往上拉": {
+        "action": "Swipe",
+        "post_delay": 2000,
+        "begin": [
+            989,
+            588,
+            291,
+            132
+        ],
+        "end": [
+            972,
+            451,
+            308,
+            269
+        ]
+    },
+    "右边往下拉": {
+        "action": "Swipe",
+        "post_delay": 2000,
+        "begin": [
+            998,
+            226,
+            292,
+            454
+        ],
+        "end": [
+            990,
+            494,
+            290,
+            226
+        ]
+    },
+    "左边往上拉": {
+        "action": "Swipe",
+        "begin": [
+            429,
+            577,
+            851,
+            143
+        ],
+        "end": [
+            425,
+            299,
+            888,
+            421
+        ]
+    },
+    "左边往下拉": {
+        "action": "Swipe",
+        "begin": [
+            440,
+            214,
+            840,
+            506
+        ],
+        "end": [
+            434,
+            571,
+            846,
+            149
+        ]
+    },
+    "活动": {
+        "recognition": "OCR",
+        "expected": "活动",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "主线": {
+        "recognition": "OCR",
+        "expected": "主线",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "返回到活动界面": {
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000,
+        "target": [
+            1165,
+            154,
+            0,
+            0
+        ]
+    },
+    "快捷战斗": {
+        "recognition": "OCR",
+        "expected": "快捷战斗",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "使魔的爱": {
+        "recognition": "OCR",
+        "action": "Click",
+        "expected": "使魔的爱",
+        "timeout": 3000,
+        "post_delay": 1000,
+        "target_offset": [
+            0,
+            80,
+            0,
+            0
+        ]
+    },
+    "虚轴之庭": {
+        "recognition": "OCR",
+        "expected": "虚轴之庭",
+        "timeout": 3000,
+        "post_delay": 1000,
+        "action": "Click"
+    },
+    "出击": {
+        "recognition": "FeatureMatch",
+        "template": "./出击.png",
+        "action": "Click",
+        "timeout": 3000,
+        "post_delay": 1000
+    },
+    "进入崩科校活": {
+        "recognition": "OCR",
+        "expected": "崩科校活",
+        "timeout": 3000,
+        "action": "Click",
+        "post_delay": 3000
+    },
+    "进入活动": {
+        "recognition": "TemplateMatch",
+        "template": "./活动截图.png",
+        "timeout": 3000,
+        "post_delay": 2000,
+        "action": "Click"
+    },
+    "进入BONUS关": {
+        "recognition": "OCR",
+        "expected": "BONUS",
+        "timeout": 3000,
+        "post_delay": 1000,
+        "action": "Click",
+        "roi": [
+            30,
+            120,
+            1240,
+            720
+        ],
+        "target_offset": [
+            0,
+            80,
+            0,
+            0
+        ],
+        "replace": [
+            [
+                "BQNUS",
+                "BONUS"
+            ]
+        ]
+    },
+    "点击小箭头": {
+        "action": "Click",
+        "post_delay": 1000,
+        "target": [
+            538,
+            664,
+            0,
+            0
+        ]
+    },
+    "双倍券1": {
+        "action": "Click",
+        "target": [
+            1101,
+            543,
+            0,
+            0
+        ]
+    },
+    "双倍券2": {
+        "action": "Click",
+        "target": [
+            701,
+            547,
+            0,
+            0
+        ]
+    },
+    "选择助战好友": {
+        "recognition": "OCR",
+        "expected": "选择助战好友",
+        "action": "Click",
+        "timeout": 1000
+    },
+    "崩坏娘": {
+        "recognition": "OCR",
+        "expected": "崩坏娘",
+        "action": "Click",
+        "timeout": 1000
+    },
+    "备用装备": {
+        "recognition": "OCR",
+        "expected": "备用装备",
+        "action": "Click",
+        "timeout": 1000
+    },
+    "开战": {
+        "recognition": "FeatureMatch",
+        "template": "./开战.png",
+        "action": "Click",
+        "timeout": 1000
+    },
+    "开战2": {
+        "recognition": "TemplateMatch",
+        "template": "./开战.png",
+        "action": "Click",
+        "timeout": 1000,
+        "roi": [
+            691,
+            378,
+            271,
+            168
+        ]
+    },
+    "点击愿望杯": {
+        "recognition": "TemplateMatch",
+        "template": "./愿望杯.png",
+        "action": "Click",
+        "timeout": 1000,
+        "threshold": 0.59
+    },
+    "点击金簪": {
+        "recognition": "TemplateMatch",
+        "template": "./金簪.png",
+        "action": "Click",
+        "timeout": 5000,
+        "threshold": 0.59
+    },
+    "再次挑战": {
+        "recognition": "OCR",
+        "expected": "再次挑战",
+        "action": "Click",
+        "timeout": 1000
+    },
+    "单纯检测再次挑战": {
+        "recognition": "OCR",
+        "expected": "再次挑战",
+        "timeout": 1000
+    },
+    "提示": {
+        "recognition": "OCR",
+        "expected": "提示",
+        "action": "Click",
+        "timeout": 1000
+    },
+    "兑换双倍体力": {
+        "recognition": "OCR",
+        "expected": "兑换双倍体力",
+        "action": "Click",
+        "timeout": 1000,
+        "roi": [
+            388,
+            224,
+            500,
+            270
+        ]
+    },
+    "兑换": {
+        "recognition": "TemplateMatch",
+        "template": "./兑换.png",
+        "action": "Click",
+        "timeout": 1000
+    },
+    "补充体力roi中间的": {
+        "recognition": "OCR",
+        "expected": "补充体力",
+        "action": "Click",
+        "timeout": 1000,
+        "roi": [
+            388,
+            224,
+            500,
+            270
+        ]
+    },
+    "购买体力按钮": {
+        "recognition": "OCR",
+        "expected": "购买",
+        "action": "Click",
+        "timeout": 1000
+    },
+    "补充体力": {
+        "recognition": "OCR",
+        "expected": "补充体力",
+        "action": "Click",
+        "timeout": 1000
+    },
+    "信息提示": {
+        "recognition": "OCR",
+        "expected": "信息提示",
+        "action": "Click",
+        "timeout": 2000
+    },
+    "崩科校活右边往左拉": {
+        "action": "Swipe",
+        "post_delay": 3000,
+        "begin": [
+            909,
+            392,
+            371,
+            328
+        ],
+        "end": [
+            664,
+            393,
+            616,
+            327
+        ]
+    },
+    "崩科校活左边往右拉": {
+        "action": "Swipe",
+        "post_delay": 3000,
+        "begin": [
+            200,
+            231,
+            1080,
+            489
+        ],
+        "end": [
+            653,
+            385,
+            627,
+            335
+        ]
+    },
+    "崩科校活战斗图标": {
+        "recognition": "TemplateMatch",
+        "template": "崩科校活战斗图标.png",
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 3000
+    },
+    "崩科校活占卜图标": {
+        "recognition": "TemplateMatch",
+        "template": "崩科校活占卜图标.png",
+        "action": "Click",
+        "post_delay": 3000,
+        "timeout": 3000
+    },
+    "崩科校活返回图标": {
+        "recognition": "TemplateMatch",
+        "template": "崩科校活返回图标.png",
+        "action": "Click",
+        "post_delay": 1000,
+        "timeout": 3000
+    },
+    "开始占卜": {
+        "recognition": "OCR",
+        "expected": "开始占卜",
+        "action": "Click",
+        "timeout": 2000,
+        "post_delay": 7000
+    },
+    "点击空白位置关闭": {
+        "recognition": "OCR",
+        "expected": "点击空白位置关闭",
+        "post_delay": 2000,
+        "action": "Click",
+        "timeout": 2000
+    },
+    "AEZAKMI": {
+        "recognition": "OCR",
+        "expected": "AEZAKMI",
+        "action": "Custom",
+        "custom_action": "AEZAKMIAction",
+        "timeout": 2000
+    },
+    "游戏测试员": {
+        "recognition": "OCR",
+        "expected": "游戏测试员",
+        "action": "Custom",
+        "custom_action": "GameTesterAction",
+        "timeout": 2000
+    }
+}
