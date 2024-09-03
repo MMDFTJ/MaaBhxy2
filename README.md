@@ -53,7 +53,7 @@
 衣服：可选幻兔*2，或者战车(拆崩科校活的障碍物)+随便一件（前提是徽章有能对敌人造成伤害的）
 徽章：海底秘辛或者与你相遇，能对敌人造成伤害还可以拆崩科校活的障碍物
 最低最低配：随便一件衣服+愿望杯+海底秘辛或者与你相遇
-![avatar]([https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E6%9C%80%E4%BD%8E%E9%85%8D%E7%BD%AE.png])
+![avatar]([https://raw.githubusercontent.com/MMDFTJ/MaaBhxy2/main/images/%E6%9C%80%E4%BD%8E%E9%85%8D%E7%BD%AE.png?token=GHSAT0AAAAAACSKVBWAFO5CD5N5XLSJ4B3AZWWS6GQ])
 例子
 ![avatar]([https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png])
 
