@@ -39,11 +39,11 @@
 ### 初始化
 
 打开游戏，进到下面的界面
-![avatar]([https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png])
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E6%B4%BB%E5%8A%A8%E7%95%8C%E9%9D%A2.png)
 用截图工具截图当前的想要刷的活动
-![avatar]([https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png])
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E6%B4%BB%E5%8A%A8%E7%95%8C%E9%9D%A2%E6%88%AA%E5%9B%BE.png)
 回到首页
-![avatar]([https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png])
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E9%A6%96%E9%A1%B5.png)
 
 ### 配装选择
 
@@ -55,7 +55,7 @@
 最低最低配：随便一件衣服+愿望杯+海底秘辛或者与你相遇
 ![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E6%9C%80%E4%BD%8E%E9%85%8D%E7%BD%AE.png)
 例子
-![avatar]([https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png])
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E6%AD%A3%E5%B8%B8%E9%85%8D%E7%BD%AE.png)
 
 **点开脚本前需要手动将套装换成自动套！**
 
@@ -64,7 +64,7 @@
 ### 启动！
 
 进入首页
-![avatar]([https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png])
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E9%A6%96%E9%A1%B5.png)
 双击main.exe，按照提示选，回车，
 
 ## 开发相关
