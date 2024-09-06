@@ -2,7 +2,6 @@
 
 基于MAA全新架构的崩崩（崩坏学园2）小助手，图像技术 + 模拟控制，解放双手！由 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 强力驱动！~~纯python（雾）~~
 
-新版本由于存在感任务位置发生变动，在最后进入崩科会失败（在修了在修了
 
 ## 功能介绍
 
@@ -40,7 +39,7 @@ A:不知道...是通过adb模拟点击的，**用别怕，怕别用**(雾
 
 ### 截图.exe
 
-1. 这个截图([源Github地址](https://github.com/MaaXYZ/MaaFramework/tree/main/tools/ImageCropper))工具用来截取活动界面的图片，点开**截图.exe**后，填0(数字)，回车。
+1. 这个截图([源Github地址](https://github.com/MaaXYZ/MaaFramework/tree/main/tools/ImageCropper))工具用来截取活动界面的图片，点开**./ImageCropper/截图.exe**后，填0(数字)，回车。
 2. 框错了可以点击**a**刷新截图，**长按s+回车**保存截图到./resource/image/，自动命名为活动截图.png
 
 ### 初始化
