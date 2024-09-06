@@ -71,7 +71,7 @@ A:不知道...是通过adb模拟点击的，**用别怕，怕别用**(雾
 
 进入首页
 ![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E9%A6%96%E9%A1%B5.png)
-双击main.exe，按照提示选，回车，
+双击main.exe，按照提示选，回车，**有问题提issue**
 
 ## 开发相关
 
