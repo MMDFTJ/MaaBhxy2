@@ -278,9 +278,9 @@
         ],
         "end": [
             191,
-            363,
+            500,
             1089,
-            357
+            220
         ]
     },
     "点击一键领取": {
@@ -415,6 +415,12 @@
     "进入首页": {
         "recognition": "OCR",
         "expected": "首页",
+        "action": "Click",
+        "post_delay": 1000
+    },
+    "进入装备": {
+        "recognition": "OCR",
+        "expected": "装备",
         "action": "Click",
         "post_delay": 1000
     },

@@ -89,13 +89,13 @@ class AllOperate:
         await self.maa_inst.run_task("刷新共鸣屋和购买零时之种")
         await self.maa_inst.run_task("确定")
 
-
     async def judge_if_activity(self):
         """
         判断是否在活动的界面上
         Returns:
 
         """
+        await self.maa_inst.run_task("进入战斗")
         if await self.maa_inst.run_task("活动") is None:
             await self.maa_inst.run_task("返回到活动界面")
             if await self.maa_inst.run_task("活动") is None:
@@ -227,7 +227,9 @@ class AllOperate:
         Returns:
 
         """
-        await self.enter_presence("崩科校活")
+        # await self.enter_presence("崩科校活")
+        await self.maa_inst.run_task("进入装备")
+        await self.maa_inst.run_task("进入崩科校活")
         await self.maa_inst.run_task("实验楼")
         await self.maa_inst.run_task("领取收益")
         await self.maa_inst.run_task("获得")  # 这里匹配不到获得 但是能实现想要的功能（） 点的是将使魔放置在实验仓内，可随时间获得使魔碎片
