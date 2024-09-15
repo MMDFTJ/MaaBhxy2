@@ -1,8 +1,8 @@
-# MAABhxy2
+# MAABhxy2测试版
 
 基于MAA全新架构的崩崩（崩坏学园2）小助手，图像技术 + 模拟控制，解放双手！由 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 强力驱动！~~纯python（雾）~~
 
-**等待maafw2.0ing...**
+**正在套UI...**
 
 
 ## 功能介绍
