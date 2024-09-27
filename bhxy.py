@@ -32,15 +32,37 @@ async def main():
     await resource.load(os.path.join(os.getcwd(), 'resource'))
 
     device_list = await Toolkit.adb_devices()
-    if not device_list:
-        print("No ADB device found.")
-        exit()
-
-    # for demo, we just use the first device
-    device = device_list[0]
+    
+    # 提供用户手动输入的选项
+    manual_input = input("是否手动输入ADB路径和地址？(y/n): ").strip().lower()
+    
+    if manual_input == 'y':
+        adb_path = input("请输入 ADB 地址 (default: adb): ").strip() or "adb"
+        address = input("请输入 ADB 端口 (default: 127.0.0.1:5555): ").strip() or "127.0.0.1:5555"
+    else:
+        if not device_list:
+            print("未找到ADB设备，程序退出...")
+            return
+        
+        # 列出所有设备并让用户选择一个设备
+        print("可用设备:")
+        for i, device in enumerate(device_list):
+            print(f"{i}: {device.address}")
+        
+        index = input("选择设备索引 (默认0): ").strip()
+        index = int(index) if index.isdigit() else 0
+        
+        if index < 0 or index >= len(device_list):
+            print("无效索引，使用默认设备。")
+            index = 0
+        
+        device = device_list[index]
+        adb_path = device.adb_path
+        address = device.address
+    
     controller = AdbController(
-        adb_path=device.adb_path,
-        address=device.address,
+        adb_path=adb_path,
+        address=address,
     )
     await controller.connect()
 
