@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>772</width>
+    <height>406</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>725</width>
+     <height>361</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_4">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="BodyLabel" name="BodyLabel">
+        <property name="text">
+         <string>Adb连接：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="PushButton" name="scanAdbPushButton">
+        <property name="text">
+         <string>扫描设备</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="EditableComboBox" name="adbAddressEditableComboBox">
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>adb地址</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="EditableComboBox" name="adbIpPortEditableComboBox">
+        <property name="placeholderText">
+         <string>adb ip:port</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="PushButton" name="adbConnectPushButton">
+        <property name="text">
+         <string>连接</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="BodyLabel" name="BodyLabel_2">
+        <property name="text">
+         <string>调度器：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6">
+       <widget class="PushButton" name="startPushButton">
+        <property name="text">
+         <string>开始</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="7">
+       <widget class="PushButton" name="stopPushButton">
+        <property name="text">
+         <string>停止</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="2" column="0">
+         <widget class="PushButton" name="screenshotPushButton">
+          <property name="text">
+           <string>截图工具</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="BodyLabel" name="BodyLabel_3">
+            <property name="text">
+             <string>任务：</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="ComboBox" name="tasksComboBox">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="QStackedWidget" name="settingStackedWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="page_5">
+           <widget class="QWidget" name="layoutWidget_2">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>0</y>
+              <width>258</width>
+              <height>221</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <item>
+                <widget class="CheckBox" name="clearPhysicalStrengthCheckBox">
+                 <property name="text">
+                  <string>清300体力</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="CheckBox" name="doubleCheckBox_clear">
+                 <property name="text">
+                  <string>双倍卷</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <item>
+                <widget class="BodyLabel" name="BodyLabel_5">
+                 <property name="text">
+                  <string>刷取次数：</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="LineEdit" name="repetitionsLineEdit_clear">
+                 <property name="text">
+                  <string>6</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="PlainTextEdit" name="PlainTextEdit">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">LineEdit, TextEdit, PlainTextEdit {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 13);
+    border-bottom: 1px solid rgba(0, 0, 0, 100);
+    /* font: 14px &quot;Segoe UI&quot;, &quot;Microsoft YaHei&quot;; */
+    padding: 0px 10px;
+    selection-background-color: #00a7b3;
+}
+
+TextEdit,
+PlainTextEdit {
+    padding: 2px 3px 2px 8px;
+}
+
+LineEdit:hover, TextEdit:hover, PlainTextEdit:hover {
+    background-color: rgba(249, 249, 249, 0.5);
+    border: 1px solid rgba(0, 0, 0, 13);
+    border-bottom: 1px solid rgba(0, 0, 0, 100);
+}
+
+LineEdit:focus {
+    border-bottom: 1px solid rgba(0, 0, 0, 13);
+    background-color: white;
+}
+
+TextEdit:focus,
+PlainTextEdit:focus {
+    border-bottom: 1px solid #009faa;
+    background-color: white;
+}
+
+LineEdit:disabled, TextEdit:disabled,
+PlainTextEdit:disabled {
+    color: rgba(0, 0, 0, 150);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 13);
+    border-bottom: 1px solid rgba(0, 0, 0, 13);
+}
+
+#lineEditButton {
+    background-color: transparent;
+    border-radius: 4px;
+    margin: 0;
+}
+
+#lineEditButton:hover {
+    background-color: rgba(0, 0, 0, 9);
+}
+
+#lineEditButton:pressed {
+    background-color: rgba(0, 0, 0, 6);
+}
+</string>
+               </property>
+               <property name="plainText">
+                <string>勾选清300体力会在完成崩科后自动找到活动关卡刷三次bouns关
+
+如果想用双倍卷的话把刷取次数填成3</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="page_6">
+           <widget class="QWidget" name="layoutWidget_3">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>0</y>
+              <width>258</width>
+              <height>158</height>
+             </rect>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_6">
+             <item row="0" column="0">
+              <layout class="QGridLayout" name="gridLayout_5">
+               <item row="1" column="1">
+                <widget class="LineEdit" name="repetitionsLineEdit">
+                 <property name="text">
+                  <string>30</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="BodyLabel" name="BodyLabel_6">
+                 <property name="text">
+                  <string>刷取次数：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="CheckBox" name="dobleCheckBox">
+                 <property name="text">
+                  <string>双倍卷</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="0">
+              <widget class="PlainTextEdit" name="PlainTextEdit_2">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">LineEdit, TextEdit, PlainTextEdit {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 13);
+    border-bottom: 1px solid rgba(0, 0, 0, 100);
+    /* font: 14px &quot;Segoe UI&quot;, &quot;Microsoft YaHei&quot;; */
+    padding: 0px 10px;
+    selection-background-color: #00a7b3;
+}
+
+TextEdit,
+PlainTextEdit {
+    padding: 2px 3px 2px 8px;
+}
+
+LineEdit:hover, TextEdit:hover, PlainTextEdit:hover {
+    background-color: rgba(249, 249, 249, 0.5);
+    border: 1px solid rgba(0, 0, 0, 13);
+    border-bottom: 1px solid rgba(0, 0, 0, 100);
+}
+
+LineEdit:focus {
+    border-bottom: 1px solid rgba(0, 0, 0, 13);
+    background-color: white;
+}
+
+TextEdit:focus,
+PlainTextEdit:focus {
+    border-bottom: 1px solid #009faa;
+    background-color: white;
+}
+
+LineEdit:disabled, TextEdit:disabled,
+PlainTextEdit:disabled {
+    color: rgba(0, 0, 0, 150);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 13);
+    border-bottom: 1px solid rgba(0, 0, 0, 13);
+}
+
+#lineEditButton {
+    background-color: transparent;
+    border-radius: 4px;
+    margin: 0;
+}
+
+#lineEditButton:hover {
+    background-color: rgba(0, 0, 0, 9);
+}
+
+#lineEditButton:pressed {
+    background-color: rgba(0, 0, 0, 6);
+}
+</string>
+               </property>
+               <property name="plainText">
+                <string>重复刷bouns关
+
+可选择是否使用双倍卷</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="BodyLabel" name="BodyLabel_4">
+            <property name="text">
+             <string>日志</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="PushButton" name="clearLogPushButton">
+            <property name="text">
+             <string>清空日志</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="PlainTextEdit" name="logPlainTextEdit">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">LineEdit, TextEdit, PlainTextEdit {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 13);
+    border-bottom: 1px solid rgba(0, 0, 0, 100);
+    /* font: 14px &quot;Segoe UI&quot;, &quot;Microsoft YaHei&quot;; */
+    padding: 0px 10px;
+    selection-background-color: #00a7b3;
+}
+
+TextEdit,
+PlainTextEdit {
+    padding: 2px 3px 2px 8px;
+}
+
+LineEdit:hover, TextEdit:hover, PlainTextEdit:hover {
+    background-color: rgba(249, 249, 249, 0.5);
+    border: 1px solid rgba(0, 0, 0, 13);
+    border-bottom: 1px solid rgba(0, 0, 0, 100);
+}
+
+LineEdit:focus {
+    border-bottom: 1px solid rgba(0, 0, 0, 13);
+    background-color: white;
+}
+
+TextEdit:focus,
+PlainTextEdit:focus {
+    border-bottom: 1px solid #009faa;
+    background-color: white;
+}
+
+LineEdit:disabled, TextEdit:disabled,
+PlainTextEdit:disabled {
+    color: rgba(0, 0, 0, 150);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 13);
+    border-bottom: 1px solid rgba(0, 0, 0, 13);
+}
+
+#lineEditButton {
+    background-color: transparent;
+    border-radius: 4px;
+    margin: 0;
+}
+
+#lineEditButton:hover {
+    background-color: rgba(0, 0, 0, 9);
+}
+
+#lineEditButton:pressed {
+    background-color: rgba(0, 0, 0, 6);
+}
+</string>
+          </property>
+          <property name="plainText">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>EditableComboBox</class>
+   <extends>LineEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>BodyLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PlainTextEdit</class>
+   <extends>QPlainTextEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
