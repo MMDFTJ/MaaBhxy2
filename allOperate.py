@@ -1,150 +1,151 @@
 class AllOperate:
-    def __init__(self, maa_inst):
-        self.maa_inst = maa_inst
+    def __init__(self, tasker, text_edit_signal):
+        self.tasker = tasker
+        self.text_edit_signal = text_edit_signal
 
-    async def enter_game(self):
+    def enter_game(self):
         """
         从进游戏到关闭公告
         Returns:
 
         """
-        await self.maa_inst.run_task('进入游戏')
+        self.tasker.post_pipeline('进入游戏').wait()
         while True:
-            if await self.maa_inst.run_task('进入'):
+            if self.tasker.post_pipeline('进入').wait().get().nodes:
                 break
 
-        await self.maa_inst.run_task('抚摸屏幕继续')
-        await self.maa_inst.run_task("领取月卡")  # 不知道成不成功
-        await self.maa_inst.run_task("每日签到")
+        self.tasker.post_pipeline('抚摸屏幕继续').wait()
+        self.tasker.post_pipeline("领取月卡").wait()  # 不知道成不成功
+        self.tasker.post_pipeline("每日签到").wait()
         while True:
-            if await self.maa_inst.run_task("前往"):
+            if self.tasker.post_pipeline("前往").wait().get().nodes:
                 continue
             else:
                 break
-        await self.maa_inst.run_task("关闭公告")
+        self.tasker.post_pipeline("关闭公告").wait()
 
-        await self.maa_inst.run_task("确定文字版")
+        self.tasker.post_pipeline("确定文字版").wait()
 
-    async def expedition(self):
+    def expedition(self):
         """
         使魔探险
         Returns:
 
         """
         while True:
-            if await self.maa_inst.run_task("进入任务"):
+            if self.tasker.post_pipeline("进入任务").wait().get().nodes:
                 continue
             else:
                 break
-        await self.maa_inst.run_task("点击使魔探险")
+        self.tasker.post_pipeline("点击使魔探险").wait()
         while True:
-            if await self.maa_inst.run_task("点击领取使魔探险奖励"):
-                await self.maa_inst.run_task("点击使魔探险")  # 防止点完最后一个然后还显示着领取东西的界面，从而避免无法识别到派遣使魔探险
-                if await self.maa_inst.run_task("信息提示"):
-                    await self.maa_inst.run_task("确定")
+            if self.tasker.post_pipeline("点击领取使魔探险奖励").wait().get().nodes:
+                self.tasker.post_pipeline("点击使魔探险").wait()  # 防止点完最后一个然后还显示着领取东西的界面，从而避免无法识别到派遣使魔探险
+                if self.tasker.post_pipeline("信息提示").wait().get().nodes:
+                    self.tasker.post_pipeline("确定").wait()
                 continue
-            elif await self.maa_inst.run_task("派遣使魔探险"):
+            elif self.tasker.post_pipeline("派遣使魔探险").wait().get().nodes:
                 continue
             else:
                 break
 
-    async def enter_presence(self, task_name):
+    def enter_presence(self, task_name):
 
-        await self.maa_inst.run_task("进入首页")
+        self.tasker.post_pipeline("进入首页").wait()
         while True:
-            if await self.maa_inst.run_task("进入任务"):
+            if self.tasker.post_pipeline("进入任务").wait().get().nodes:
                 continue
             else:
                 break
-        await self.maa_inst.run_task("点击存在感")
+        self.tasker.post_pipeline("点击存在感").wait()
         while True:
-            if not await self.maa_inst.run_task(task_name):
+            if not self.tasker.post_pipeline(task_name).wait().get().nodes:
                 # 这里需要向下滑动一点点让前往出来
-                await self.maa_inst.run_task("下边往上拉")
+                self.tasker.post_pipeline("下边往上拉").wait()
             else:
                 while True:
-                    if await self.maa_inst.run_task(task_name):
-                        await self.maa_inst.run_task("下边往上拉")
+                    if self.tasker.post_pipeline(task_name).wait().get().nodes:
+                        self.tasker.post_pipeline("下边往上拉").wait()
                     else:
                         return
 
-    async def buy_gift_pack(self):
+    def buy_gift_pack(self):
         """
         购买礼包
         Returns:
 
         """
-        await self.enter_presence("战力补强")
-        for i in range(5):
-            await self.maa_inst.run_task("滚动到下面")
-            if await self.maa_inst.run_task("点击零时馈礼"):
-                if await self.maa_inst.run_task("点击是否购买零时馈礼"):
-                    await self.maa_inst.run_task("购买")
-                    await self.maa_inst.run_task("确定")
+        self.enter_presence("战力补强")
+        for i in range(3):
+            self.tasker.post_pipeline("滚动到下面").wait()
+            if self.tasker.post_pipeline("点击零时馈礼").wait().get().nodes:
+                if self.tasker.post_pipeline("点击是否购买零时馈礼").wait().get().nodes:
+                    self.tasker.post_pipeline("购买").wait()
+                    self.tasker.post_pipeline("确定").wait()
                     break
-        await self.maa_inst.run_task("商店")
-        await self.maa_inst.run_task("确认")
-        await self.maa_inst.run_task("进入崩坏屋")
-        await self.maa_inst.run_task("共鸣屋")
-        await self.maa_inst.run_task("刷新共鸣屋和购买零时之种")
-        await self.maa_inst.run_task("确定")
+        self.tasker.post_pipeline("商店").wait()
+        self.tasker.post_pipeline("确认").wait()
+        self.tasker.post_pipeline("进入崩坏屋").wait()
+        self.tasker.post_pipeline("共鸣屋").wait()
+        self.tasker.post_pipeline("刷新共鸣屋和购买零时之种").wait()
+        self.tasker.post_pipeline("确定").wait()
 
-    async def judge_if_activity(self):
+    def judge_if_activity(self):
         """
         判断是否在活动的界面上
         Returns:
 
         """
-        await self.maa_inst.run_task("进入战斗")
-        if await self.maa_inst.run_task("活动") is None:
-            await self.maa_inst.run_task("返回到活动界面")
-            if await self.maa_inst.run_task("活动") is None:
-                await self.maa_inst.run_task("返回到活动界面")
-            await self.maa_inst.run_task("活动")
+        self.tasker.post_pipeline("进入战斗").wait()
+        if not self.tasker.post_pipeline("活动").wait().get().nodes:
+            self.tasker.post_pipeline("返回到活动界面").wait()
+            if not self.tasker.post_pipeline("活动").wait().get().nodes:
+                self.tasker.post_pipeline("返回到活动界面")
+            self.tasker.post_pipeline("活动").wait()
 
-    async def dy_crack(self):
+    def dy_crack(self):
         """
         多元裂缝里面的操作
         Returns:
 
         """
-        await self.enter_presence("火线救援")
-        await self.maa_inst.run_task("使魔的爱")
-        if await self.maa_inst.run_task("快捷战斗"):
-            await self.maa_inst.run_task("确定文字版")
-            await self.maa_inst.run_task("确定文字版")
+        self.enter_presence("火线救援")
+        self.tasker.post_pipeline("使魔的爱").wait()
+        if self.tasker.post_pipeline("快捷战斗").wait().get().nodes:
+            self.tasker.post_pipeline("确定文字版").wait()
+            self.tasker.post_pipeline("确定文字版").wait()
 
-        await self.maa_inst.run_task("进入战斗")
-        await self.maa_inst.run_task("虚轴之庭")
-        await self.maa_inst.run_task("出击")  # 会抛错 用FeatureMatch可以识别到出击 用TemplateMatch识别到的只有0.5左右
+        self.tasker.post_pipeline("进入战斗").wait()
+        self.tasker.post_pipeline("虚轴之庭").wait()
+        self.tasker.post_pipeline("出击")  # 会抛错 用FeatureMatch可以识别到出击 用TemplateMatch识别到的只有0.5左右
         for i in range(3):
-            if await self.maa_inst.run_task("快捷战斗"):
-                await self.maa_inst.run_task("确定文字版")
-                await self.maa_inst.run_task("确定文字版")
+            if self.tasker.post_pipeline("快捷战斗").wait().get().nodes:
+                self.tasker.post_pipeline("确定文字版").wait()
+                self.tasker.post_pipeline("确定文字版").wait()
             else:
                 break
-        await self.maa_inst.run_task("进入战斗")
+        self.tasker.post_pipeline("进入战斗").wait()
 
-    async def enter_activity(self):
+    def enter_activity(self):
         """
         进入活动的BONUS关
         Returns:
 
         """
-        # await self.maa_inst.run_task("进入战斗")
+        # self.tasker.post_pipeline("进入战斗")
         while True:
-            if await self.maa_inst.run_task("进入活动"):
+            if self.tasker.post_pipeline("进入活动").wait().get().nodes:
                 break
-            await self.maa_inst.run_task("右边往下拉")
-            # await self.maa_inst.run_task("左边往上拉")
+            self.tasker.post_pipeline("右边往下拉").wait()
+            # self.tasker.post_pipeline("左边往上拉")
 
         while True:
-            if await self.maa_inst.run_task("进入BONUS关"):
+            if self.tasker.post_pipeline("进入BONUS关").wait().get().nodes:
                 break
             else:
-                await self.maa_inst.run_task("点击小箭头")
+                self.tasker.post_pipeline("点击小箭头").wait()
 
-    async def cycle_battle(self, max_battle=6, double_bool=False):
+    def cycle_battle(self, max_battle=6, double_bool=False):
         """
         循环战斗
         Args:
@@ -156,123 +157,130 @@ class AllOperate:
         """
         total_battle_number = 0
         if double_bool:
-            await self.maa_inst.run_task("双倍券1")
+            self.tasker.post_pipeline("双倍券1").wait()
         while True:
             double_bool = double_bool
-            if await self.maa_inst.run_task("补充体力"):
-                if await self.maa_inst.run_task("兑换双倍体力"):
-                    await self.maa_inst.run_task("兑换")
-                    await self.maa_inst.run_task("补充体力")
+            if self.tasker.post_pipeline("补充体力").wait().get().nodes:
+                if self.tasker.post_pipeline("兑换双倍体力").wait().get().nodes:
+                    self.tasker.post_pipeline("兑换").wait()
+                    self.tasker.post_pipeline("补充体力").wait()
 
-                if await self.maa_inst.run_task("补充体力roi中间的"):
-                    await self.maa_inst.run_task("购买体力按钮")
+                if self.tasker.post_pipeline("补充体力roi中间的").wait().get().nodes:
+                    self.tasker.post_pipeline("购买体力按钮").wait()
 
-            await self.maa_inst.run_task("选择助战好友")
-            if await self.maa_inst.run_task("提示"):
-                await self.maa_inst.run_task("开战2")
-            await self.maa_inst.run_task("崩坏娘")
-            await self.maa_inst.run_task("开战")
+            self.tasker.post_pipeline("选择助战好友").wait()
+            if self.tasker.post_pipeline("提示").wait().get().nodes:
+                self.tasker.post_pipeline("开战2").wait()
+            self.tasker.post_pipeline("崩坏娘").wait()
+            self.tasker.post_pipeline("开战").wait()
             total_battle_number += 1
             while True:
-                if await self.maa_inst.run_task("点击愿望杯"):
-                    await self.maa_inst.run_task("点击金簪")
+                if self.tasker.post_pipeline("点击愿望杯").wait().get().nodes:
+                    self.tasker.post_pipeline("点击金簪").wait()
                     break
 
             while True:
                 if double_bool:
-                    if await self.maa_inst.run_task("单纯检测再次挑战"):
-                        await self.maa_inst.run_task("双倍券2")
+                    print(self.tasker.post_pipeline("单纯检测再次挑战").wait().get().nodes)
+                    if self.tasker.post_pipeline("单纯检测再次挑战").wait().get().nodes:
+                        self.tasker.post_pipeline("双倍券2").wait()
                         break
                 else:
                     break
 
             if total_battle_number == max_battle:
                 while True:
-                    if await self.maa_inst.run_task("确定文字版"):
+                    if self.tasker.post_pipeline("确定文字版").wait().get().nodes:
+                        self.text_edit_signal.emit(f'当前刷取次数:{total_battle_number}')
+                        self.text_edit_signal.emit('打完辣')
                         print('打完啦')
                         return
 
             while True:
-                if await self.maa_inst.run_task("再次挑战"):
+                if self.tasker.post_pipeline("再次挑战").wait().get().nodes:
                     """
                     判断是否刷完这么多把副本不能放这里，会因为买体力continue后多+=1一次，这样就不准了
                     """
 
-                    if await self.maa_inst.run_task("补充体力roi中间的"):
-                        await self.maa_inst.run_task("购买体力按钮")
+                    if self.tasker.post_pipeline("补充体力roi中间的").wait().get().nodes:
+                        self.tasker.post_pipeline("购买体力按钮").wait()
                         continue
 
-                    elif await self.maa_inst.run_task("兑换双倍体力"):
-                        await self.maa_inst.run_task("兑换")
+                    elif self.tasker.post_pipeline("兑换双倍体力").wait().get().nodes:
+                        self.tasker.post_pipeline("兑换").wait()
                         continue
 
                     else:
                         break
+            self.text_edit_signal.emit(f'当前刷取次数:{total_battle_number}')
 
-    async def get_daily_rewards(self):
+    def get_daily_rewards(self):
         """
         领取每日奖励
         Returns:
 
         """
-        # await self.maa_inst.run_task("进入战斗")
-        await self.maa_inst.run_task("进入首页")
-        await self.maa_inst.run_task("进入任务")
-        await self.maa_inst.run_task('点击存在感')
-        await self.maa_inst.run_task("点击一键领取")
+        self.tasker.post_pipeline("进入战斗").wait()
+        self.tasker.post_pipeline("进入首页").wait()
+        self.tasker.post_pipeline("进入任务").wait()
+        self.tasker.post_pipeline('点击存在感').wait()
+        self.tasker.post_pipeline("点击一键领取").wait()
 
-    async def bkxh(self):
+    def bkxh(self):
         """
         崩科校活
         Returns:
 
         """
-        # await self.enter_presence("崩科校活")
-        await self.maa_inst.run_task("进入装备")
-        await self.maa_inst.run_task("进入崩科校活")
-        await self.maa_inst.run_task("实验楼")
-        await self.maa_inst.run_task("领取收益")
-        await self.maa_inst.run_task("获得")  # 这里匹配不到获得 但是能实现想要的功能（） 点的是将使魔放置在实验仓内，可随时间获得使魔碎片
-        await self.maa_inst.run_task("x")
+        # self.enter_presence("崩科校活")
+        self.tasker.post_pipeline("进入装备").wait()
+        self.tasker.post_pipeline("进入崩科校活").wait()
+        self.tasker.post_pipeline("实验楼").wait()
+        self.tasker.post_pipeline("领取收益").wait()
+        self.tasker.post_pipeline("获得").wait()  # 这里匹配不到获得 但是能实现想要的功能（） 点的是将使魔放置在实验仓内，可随时间获得使魔碎片
+        self.tasker.post_pipeline("x").wait()
         for i in range(2):
-            await self.maa_inst.run_task("崩科校活右边往左拉")
-            if await self.maa_inst.run_task("崩科校活战斗图标"):
-                if await self.maa_inst.run_task("AEZAKMI"):
+            self.tasker.post_pipeline("崩科校活右边往左拉").wait()
+            if self.tasker.post_pipeline("崩科校活战斗图标").wait().get().nodes:
+                if self.tasker.post_pipeline("AEZAKMI").wait().get().nodes:
                     continue
-                if await self.maa_inst.run_task("游戏测试员"):
+                if self.tasker.post_pipeline("游戏测试员").wait().get().nodes:
                     continue
-                await self.maa_inst.run_task("选择助战好友")
-                if await self.maa_inst.run_task("提示"):
-                    await self.maa_inst.run_task("开战2")
-                await self.maa_inst.run_task("备用装备")
-                await self.maa_inst.run_task("开战")
+                self.tasker.post_pipeline("选择助战好友").wait()
+                if self.tasker.post_pipeline("提示").wait().get().nodes:
+                    self.tasker.post_pipeline("开战2").wait()
+                self.tasker.post_pipeline("备用装备").wait()
+                self.tasker.post_pipeline("开战").wait()
                 while True:
-                    if await self.maa_inst.run_task("点击愿望杯"):
-                        await self.maa_inst.run_task("点击金簪")
+                    if self.tasker.post_pipeline("点击愿望杯").wait().get().nodes:
+                        self.tasker.post_pipeline("点击金簪").wait()
                         break
                 while True:
-                    if await self.maa_inst.run_task("确定文字版"):
+                    if self.tasker.post_pipeline("确定文字版").wait().get().nodes:
                         break
             else:
                 break
-        await self.maa_inst.run_task("崩科校活左边往右拉")
-        await self.maa_inst.run_task("崩科校活占卜图标")
-        await self.maa_inst.run_task("开始占卜")
-        await self.maa_inst.run_task("点击空白位置关闭")
-        await self.maa_inst.run_task("崩科校活返回图标")
+        self.tasker.post_pipeline("崩科校活左边往右拉").wait()
+        self.tasker.post_pipeline("崩科校活占卜图标").wait()
+        self.tasker.post_pipeline("开始占卜").wait()
+        self.tasker.post_pipeline("点击空白位置关闭").wait()
+        self.tasker.post_pipeline("崩科校活返回图标").wait()
 
-    async def community(self):
+    def community(self):
         """
         领取社团体力
         Returns:
 
         """
-        await self.maa_inst.run_task("社交")
-        await self.maa_inst.run_task("我的社团")
-        if await self.maa_inst.run_task("不可领"):
-            return
-        await self.maa_inst.run_task("可领")
-        await self.maa_inst.run_task("领取")
-        await self.maa_inst.run_task("确定")
-        if await self.maa_inst.run_task("信息提示"):
-            await self.maa_inst.run_task("确定")
+        try:
+            self.tasker.post_pipeline("社交").wait()
+            self.tasker.post_pipeline("我的社团").wait()
+            if self.tasker.post_pipeline("不可领").wait().get().nodes:
+                return
+            self.tasker.post_pipeline("可领").wait()
+            self.tasker.post_pipeline("领取").wait()
+            self.tasker.post_pipeline("确定").wait()
+            if self.tasker.post_pipeline("信息提示").wait().get().nodes:
+                self.tasker.post_pipeline("确定").wait()
+        except TypeError as e:
+            print('强制中断')
