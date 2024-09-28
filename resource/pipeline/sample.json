@@ -8,6 +8,17 @@
             0
         ]
     },
+    "电池2": {
+        "recognition": "OCR",
+        "expected": "电池",
+        "action": "Click"
+    },
+
+    "电池3": {
+        "recognition": "OCR",
+        "expected": "应用正常运行中",
+        "action": "Click"
+    },
     "测试": {
         "recognition": "OCR",
         "expected": "测试",
@@ -569,7 +580,8 @@
         "template": "./活动截图.png",
         "timeout": 3000,
         "post_delay": 2000,
-        "action": "Click"
+        "action": "Click",
+        "ratio": 0.1
     },
     "进入BONUS关": {
         "recognition": "OCR",
@@ -662,10 +674,17 @@
     },
     "点击愿望杯": {
         "recognition": "TemplateMatch",
-        "template": "./愿望杯.png",
+        "template": "./愿望杯2.png",
         "action": "Click",
         "timeout": 1000,
-        "threshold": 0.59
+        "threshold": 0.59,
+        "green_mask": true,
+        "roi": [
+            920,
+            357,
+            352,
+            349
+        ]
     },
     "点击金簪": {
         "recognition": "TemplateMatch",
@@ -775,7 +794,7 @@
         "recognition": "TemplateMatch",
         "template": "崩科校活战斗图标.png",
         "action": "Click",
-        "post_delay": 2000,
+        "post_delay": 3000,
         "timeout": 3000
     },
     "崩科校活占卜图标": {
