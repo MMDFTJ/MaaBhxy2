@@ -82,7 +82,7 @@ A:不知道...是通过adb模拟点击的，**用别怕，怕别用**(雾
 进入首页
 ![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E9%A6%96%E9%A1%B5.png)
 双击BHXY.exe
-![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E9%A6%96%E9%A1%B5.png)
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/BHXY%E6%88%AA%E5%9B%BE.png)
 
 1. 先扫描设备，旁边有得选adb地址（一般默认就行）
 2. 点连接，然后等个3，4秒（防止没有连接上）
