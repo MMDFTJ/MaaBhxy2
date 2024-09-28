@@ -1,178 +1,230 @@
-import os
 import time
-from typing import Tuple
+import os
 
 # python -m pip install maafw
-from maa.define import RectType
+# from maa.define import RectType
 from maa.resource import Resource
 from maa.controller import AdbController
-from maa.instance import Instance
+from maa.tasker import Tasker
 from maa.toolkit import Toolkit
+from maa.notification_handler import NotificationHandler
 
-from maa.custom_recognizer import CustomRecognizer
 from maa.custom_action import CustomAction
-
-import asyncio
-
 from allOperate import AllOperate
+from maa.context import Context
 
 
-def x(msg, js, callback_arg):
-    print(f'执行信息:{msg}')
-    print(f'返回的js数据:{js}')
-    print(f'callback_arg:{callback_arg}')
-    print('-' * 20)
+class MyNotificationHandler(NotificationHandler):
+    def __init__(self, text_edit_signal):
+        super().__init__()
+        self.text_edit_signal = text_edit_signal
+
+    def on_raw_notification(self, msg: str, details: dict):
+        print(f'执行信息:{msg}')
+        print(f'返回的js数据:{details}')
+        print('-' * 20)
+        self.text_edit_signal.emit(f'任务名:{details.get("entry")} 执行状态:{msg.split(".")[-1]}')
+        super().on_raw_notification(msg, details)
 
 
-async def main():
-    user_path = "./"
-    Toolkit.init_option(user_path)
-    # os.path.dirname(os.path.abspath(os.getcwd()))
-    resource = Resource()
-    await resource.load(os.path.join(os.getcwd(), 'resource'))
+class Bhxy:
+    def __init__(self, text_edit_signal):
+        self.resource = None
+        self.tasker = None
+        self.text_edit_signal = text_edit_signal
 
-    device_list = await Toolkit.adb_devices()
-    if not device_list:
-        print("No ADB device found.")
-        exit()
+    def get_adb_device(self):
+        user_path = "./"
+        Toolkit.init_option(user_path)
 
-    # for demo, we just use the first device
-    device = device_list[0]
-    controller = AdbController(
-        adb_path=device.adb_path,
-        address=device.address,
-    )
-    await controller.connect()
+        self.resource = Resource()  # 写到这里
+        res_job = self.resource.post_path(os.path.join(os.getcwd(), 'resource'))
+        res_job.wait()
 
-    maa_inst = Instance(x)
-    maa_inst.bind(resource, controller)
-    if not maa_inst.inited:
-        print("Failed to init MAA.")
-        exit()
+        adb_devices = Toolkit.find_adb_devices()
+        if not adb_devices:
+            print("No ADB device found.")
+            exit()
+        return adb_devices
+        # for demo, we just use the first device
 
-    """
-        callback并不会返回json中next，感觉需要分开写，然后通过allOperate.py中集成操作达到每个操作都返回，先拆开写好流程在封装每一个操作方便维护
-    """
-    allOperate = AllOperate(maa_inst)
-    maa_inst.register_recognizer("MyRec", my_rec)
-    maa_inst.register_action("MyAct", my_act)
-    maa_inst.register_action("AEZAKMIAction", AEZAKMIAction)
-    maa_inst.register_action("GameTesterAction", gameTesterAction)
-    #
-    # await maa_inst.run_task('进入游戏')
-    #
-    # await allOperate.enter_game()
+    def connect_adb(self, adb_devices):
+        device = adb_devices
+        controller = AdbController(
+            adb_path=device.adb_path,
+            address=device.address,
+            screencap_methods=device.screencap_methods,
+            input_methods=device.input_methods,
+            config=device.config,
+        )
+        controller.post_connection().wait()
+        self.tasker = Tasker(MyNotificationHandler(self.text_edit_signal))
+        self.tasker.bind(self.resource, controller)
+        # self.tasker.set_save_draw(True)
+        if not self.tasker.inited:
+            print("Failed to init MAA.")
+            exit()
+        self.resource.register_custom_action("AEZAKMIAction", AEZAKMIAction())
+        self.resource.register_custom_action("GameTesterAction", GameTesterAction())
 
-    await allOperate.expedition()
-    # ------------------------------
-    await allOperate.buy_gift_pack()
+    def start_expedition(self, task_bool=False, max_battle=3, double_bool=True):
+        allOperate = AllOperate(self.tasker, self.text_edit_signal)
 
-    await allOperate.dy_crack()
+        allOperate.expedition()
 
-    await allOperate.bkxh()
+        allOperate.buy_gift_pack()
 
-    if inputNum == "0":
-        await allOperate.judge_if_activity()
-        await allOperate.enter_activity()
-        await allOperate.cycle_battle(max_battle=3, double_bool=True)
+        allOperate.dy_crack()
 
-    await allOperate.community()
+        allOperate.bkxh()
 
-    await allOperate.get_daily_rewards()
+        if task_bool:
+            allOperate.judge_if_activity()
+            allOperate.enter_activity()
+            allOperate.cycle_battle(max_battle, double_bool)
 
+        allOperate.community()
 
-class MyRecognizer(CustomRecognizer):
-    def analyze(self, context, image, task_name, custom_param) -> Tuple[bool, RectType, str]:
-        return True, (0, 0, 100, 100), "Hello World!"
+        allOperate.get_daily_rewards()
 
+    def start_cycle_battle(self, max_battle=3, double_bool=True):
+        allOperate = AllOperate(self.tasker, self.text_edit_signal)
+        allOperate.cycle_battle(max_battle, double_bool)
 
-class MyAction(CustomAction):
-    def run(self, context, task_name, custom_param, box, rec_detail) -> bool:
-        print(
-            f"MyAction.run: task_name: {task_name}, custom_param: {custom_param}, box: {box}, rec_detail: {rec_detail}")
-        print(f'myAction Box:{box}')
-
-        x, y = (box[0] + box[2]), (box[1] + box[3])
-        success = context.click(x, y)
-        return success
-
-    def stop(self) -> None:
-        pass
+    def start(self):
+        adb_device = self.get_adb_device()
+        for i in range(len(adb_device)):
+            print(f'序号{i}:模拟器{adb_device[i].name} {adb_device[i].address}')
+        self.connect_adb(adb_device[0])
+        self.start_expedition()
 
 
 class AEZAKMIAction(CustomAction):
-    def run(self, context, task_name, custom_param, box, rec_detail) -> bool:
+    def run(
+        self,
+        context: Context,
+        argv: CustomAction.RunArg,
+    ) -> CustomAction.RunResult:
         print(
-            f"MyAction.run: task_name: {task_name}, custom_param: {custom_param}, box: {box}, rec_detail: {rec_detail}")
-        print(f'myAction Box:{box}')
-        x, y = (box[0] + box[2]), (box[1] + box[3])
-        success = context.click(x, y)
-        context.run_task("选择助战好友")
-        if context.run_task("提示"):
-            context.run_task("开战2")
-        context.run_task("崩坏娘")
-        context.run_task("开战")
-        # while True:
-        #     if context.run_task("点击愿望杯"):
-        #         context.run_task("点击金簪")
-        #         break
-        # while True:
-        #     start_time = time.time()
-        #     while True:
-        #         elapsed_time = time.time() - start_time
-        #         if elapsed_time >= 3:
-        #             break
-        #         context.touch_down(0, 168, 400, 50)
-        #         time.sleep(5)
-        #     start_time = time.time()
-        #     while True:
-        #         elapsed_time = time.time() - start_time
-        #         if elapsed_time >= 3:
-        #             break
-        #         context.touch_down(0, 168, 670, 50)
-        #         time.sleep(5)
-        while True:
-            if context.run_task("确定文字版"):
-                return success
+            f"on MyAction.run, context: {context}, task_detail: {argv.task_detail}, action_name: {argv.custom_action_name}, action_param: {argv.custom_action_param}, box: {argv.box}, reco_detail: {argv.reco_detail}"
+        )
+        controller = context.tasker.controller
+        x, y = (argv.box[0] + argv.box[2]), (argv.box[1] + argv.box[3])
+        controller.post_click(x, y)
+        context.run_pipeline("选择助战好友")
+        if context.run_pipeline("提示"):
+            context.run_pipeline("开战2")
+        context.run_pipeline("崩坏娘")
+        context.run_pipeline("开战")
 
-    def stop(self) -> None:
-        pass
+        while True:
+            if context.run_pipeline("确定文字版").nodes:
+                return CustomAction.RunResult(success=True)
 
 
 class GameTesterAction(CustomAction):
-    def run(self, context, task_name, custom_param, box, rec_detail) -> bool:
+    def run(
+        self,
+        context: Context,
+        argv: CustomAction.RunArg,
+    ) -> CustomAction.RunResult:
         print(
-            f"MyAction.run: task_name: {task_name}, custom_param: {custom_param}, box: {box}, rec_detail: {rec_detail}")
-        print(f'myAction Box:{box}')
-        x, y = (box[0] + box[2]), (box[1] + box[3])
-        success = context.click(x, y)
-        context.run_task("选择助战好友")
-        if context.run_task("提示"):
-            context.run_task("开战2")
-        context.run_task("崩坏娘")
-        context.run_task("开战")
+            f"on MyAction.run, context: {context}, task_detail: {argv.task_detail}, action_name: {argv.custom_action_name}, action_param: {argv.custom_action_param}, box: {argv.box}, reco_detail: {argv.reco_detail}"
+        )
+        controller = context.tasker.controller
+        x, y = (argv.box[0] + argv.box[2]), (argv.box[1] + argv.box[3])
+        controller.post_click(x, y)
+        context.run_pipeline("选择助战好友")
+        if context.run_pipeline("提示"):
+            context.run_pipeline("开战2")
+        context.run_pipeline("崩坏娘")
+        context.run_pipeline("开战")
 
         while True:
-            context.click(1008, 624)
+            controller.post_click(1008, 624)
             time.sleep(1)
-            context.click(1181, 624)
-            if context.run_task("确定文字版"):
-                return success
-
-    def stop(self) -> None:
-        pass
+            controller.post_click(1181, 624)
+            if context.run_pipeline("确定文字版").nodes:
+                return CustomAction.RunResult(success=True)
 
 
-AEZAKMIAction = AEZAKMIAction()
-gameTesterAction = GameTesterAction()
-my_rec = MyRecognizer()
-my_act = MyAction()
-
-if __name__ == "__main__":
-    inputNum = input('0-清体力（输入0清体力，留空回车不清体力打崩科校活）:')
-    if inputNum == '0' or inputNum == '':
-        pass
-    else:
-        raise TypeError("参数错误")
-    asyncio.run(main())
-
+if __name__ == '__main__':
+    b = Bhxy(text_edit_signal=None)
+    b.start()
+# def main():
+#     user_path = "./"
+#     Toolkit.init_option(user_path)
+#
+#     resource = Resource()
+#     res_job = resource.post_path(r"C:\Users\L\Desktop\MaaFramework-main\sample\resource")
+#     res_job.wait()
+#
+#     adb_devices = Toolkit.find_adb_devices()
+#     if not adb_devices:
+#         print("No ADB device found.")
+#         exit()
+#
+#     # for demo, we just use the first device
+#     device = adb_devices[0]
+#     controller = AdbController(
+#         adb_path=device.adb_path,
+#         address=device.address,
+#         screencap_methods=device.screencap_methods,
+#         input_methods=device.input_methods,
+#         config=device.config,
+#     )
+#     controller.post_connection().wait()
+#
+#     tasker = Tasker()
+#     tasker.bind(resource, controller)
+#
+#     if not tasker.inited:
+#         print("Failed to init MAA.")
+#         exit()
+#
+#     allOperate = AllOperate(tasker)
+#     allOperate.expedition()
+#
+#     # resource.register_custom_recognizer("MyRec", MyRecognizer())
+#
+#     # task_detail = tasker.post_pipeline("StartUpAndClickButton").wait().get()
+#     # do something with task_detail
+#
+#     # task_detail = tasker.post_recognition("MySingleMatch").wait().get()
+#     # do something with task_detail
+#
+#
+# class MyRecognizer(CustomRecognizer):
+#
+#     def analyze(
+#         self,
+#         context,
+#         argv: CustomRecognizer.AnalyzeArg,
+#     ) -> CustomRecognizer.AnalyzeResult:
+#         reco_detail = context.run_recognition(
+#             "MyCustomOCR",
+#             argv.image,
+#             pipeline_override={"MyCustomOCR": {"roi": [100, 100, 200, 300]}},
+#         )
+#
+#         # context is a reference, will override the pipeline for whole task
+#         context.override_pipeline({"MyCustomOCR": {"roi": [1, 1, 114, 514]}})
+#         # context.run_recognition ...
+#
+#         # make a new context to override the pipeline, only for itself
+#         new_context = context.clone()
+#         new_context.override_pipeline({"MyCustomOCR": {"roi": [100, 200, 300, 400]}})
+#         reco_detail = new_context.run_recognition("MyCustomOCR", argv.image)
+#
+#         click_job = context.tasker.controller.post_click(10, 20)
+#         click_job.wait()
+#
+#         context.override_next(argv.current_task_name, ["TaskA", "TaskB"])
+#
+#         return CustomRecognizer.AnalyzeResult(
+#             box=(0, 0, 100, 100), detail="Hello World!"
+#         )
+#
+#
+# if __name__ == "__main__":
+#     main()
