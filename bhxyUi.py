@@ -170,7 +170,7 @@ class MyWindow2(QMainWindow, Ui_Form):
             self.thread.set_max_battle(max_battle)
             self.thread.start()
         if self.tasksComboBox.currentIndex() == 1:
-            double_bool = self.dobleCheckBox.isChecked()
+            double_bool = self.doubleCheckBox.isChecked()
             max_battle = int(self.repetitionsLineEdit.text())
             # self.thread = WorkThread(self.bhxy, max_battle=max_battle, double_bool=double_bool)
             self.thread.set_task_type('start_cycle_battle')

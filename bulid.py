@@ -32,14 +32,15 @@ if maa_bin_path2 is None:
 
 # 构建 --add-data 参数
 add_data_param2 = f'{maa_bin_path2}{os.pathsep}MaaAgentBinary'
-
+add_data_param3 = r'C:\Users\L\Desktop\MaaBhxy2-2.0\images\ico.ico'
 
 # 运行 PyInstaller
 PyInstaller.__main__.run([
-    'bhxy.py',
+    'bhxyUi.py',
     '--onefile',
     '--name=BHXY',
     f'--add-data={add_data_param}',
     f'--add-data={add_data_param2}',
     '--clean',
+    f'--icon={add_data_param3}'
 ])

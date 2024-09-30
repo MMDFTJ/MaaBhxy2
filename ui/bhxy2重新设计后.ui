@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>772</width>
+    <width>769</width>
     <height>406</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
@@ -134,7 +137,7 @@
         <item row="1" column="0">
          <widget class="QStackedWidget" name="settingStackedWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="page_5">
            <widget class="QWidget" name="layoutWidget_2">
@@ -143,7 +146,7 @@
               <x>40</x>
               <y>0</y>
               <width>258</width>
-              <height>221</height>
+              <height>211</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -159,7 +162,7 @@
                <item>
                 <widget class="CheckBox" name="doubleCheckBox_clear">
                  <property name="text">
-                  <string>双倍卷</string>
+                  <string>双倍券</string>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
@@ -264,9 +267,10 @@ PlainTextEdit:disabled {
 </string>
                </property>
                <property name="plainText">
-                <string>勾选清300体力会在完成崩科后自动找到活动关卡刷三次bouns关
+                <string>勾选清300体力会在完成崩科后自动找到活动关卡刷三次BONUS关
 
-如果想用双倍卷的话把刷取次数填成3</string>
+如果想用双倍券的话把刷取次数填成3
+</string>
                </property>
               </widget>
              </item>
@@ -280,7 +284,7 @@ PlainTextEdit:disabled {
               <x>40</x>
               <y>0</y>
               <width>258</width>
-              <height>158</height>
+              <height>171</height>
              </rect>
             </property>
             <layout class="QGridLayout" name="gridLayout_6">
@@ -301,9 +305,9 @@ PlainTextEdit:disabled {
                 </widget>
                </item>
                <item row="0" column="0">
-                <widget class="CheckBox" name="dobleCheckBox">
+                <widget class="CheckBox" name="doubleCheckBox">
                  <property name="text">
-                  <string>双倍卷</string>
+                  <string>双倍券</string>
                  </property>
                 </widget>
                </item>
@@ -384,9 +388,10 @@ PlainTextEdit:disabled {
 </string>
                </property>
                <property name="plainText">
-                <string>重复刷bouns关
+                <string>重复刷BOUNS关
 
-可选择是否使用双倍卷</string>
+可选择是否使用双倍卷
+</string>
                </property>
               </widget>
              </item>

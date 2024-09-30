@@ -25,7 +25,8 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(772, 406)
+        Form.resize(769, 406)
+        Form.setStyleSheet(u"")
         self.layoutWidget = QWidget(Form)
         self.layoutWidget.setObjectName(u"layoutWidget")
         self.layoutWidget.setGeometry(QRect(20, 20, 725, 361))
@@ -111,7 +112,7 @@ class Ui_Form(object):
         self.page_5.setObjectName(u"page_5")
         self.layoutWidget_2 = QWidget(self.page_5)
         self.layoutWidget_2.setObjectName(u"layoutWidget_2")
-        self.layoutWidget_2.setGeometry(QRect(40, 0, 258, 221))
+        self.layoutWidget_2.setGeometry(QRect(40, 0, 258, 211))
         self.verticalLayout_2 = QVBoxLayout(self.layoutWidget_2)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -217,7 +218,7 @@ class Ui_Form(object):
         self.page_6.setObjectName(u"page_6")
         self.layoutWidget_3 = QWidget(self.page_6)
         self.layoutWidget_3.setObjectName(u"layoutWidget_3")
-        self.layoutWidget_3.setGeometry(QRect(40, 0, 258, 158))
+        self.layoutWidget_3.setGeometry(QRect(40, 0, 258, 171))
         self.gridLayout_6 = QGridLayout(self.layoutWidget_3)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
         self.gridLayout_6.setContentsMargins(0, 0, 0, 0)
@@ -233,10 +234,10 @@ class Ui_Form(object):
 
         self.gridLayout_5.addWidget(self.BodyLabel_6, 1, 0, 1, 1)
 
-        self.dobleCheckBox = CheckBox(self.layoutWidget_3)
-        self.dobleCheckBox.setObjectName(u"dobleCheckBox")
+        self.doubleCheckBox = CheckBox(self.layoutWidget_3)
+        self.doubleCheckBox.setObjectName(u"doubleCheckBox")
 
-        self.gridLayout_5.addWidget(self.dobleCheckBox, 0, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.doubleCheckBox, 0, 0, 1, 1)
 
         self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -400,7 +401,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.settingStackedWidget.setCurrentIndex(0)
+        self.settingStackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(Form)
@@ -422,18 +423,20 @@ class Ui_Form(object):
         self.BodyLabel_3.setText(QCoreApplication.translate("Form", u"\u4efb\u52a1\uff1a", None))
         self.tasksComboBox.setText("")
         self.clearPhysicalStrengthCheckBox.setText(QCoreApplication.translate("Form", u"\u6e05300\u4f53\u529b", None))
-        self.doubleCheckBox_clear.setText(QCoreApplication.translate("Form", u"\u53cc\u500d\u5377", None))
+        self.doubleCheckBox_clear.setText(QCoreApplication.translate("Form", u"\u53cc\u500d\u5238", None))
         self.BodyLabel_5.setText(QCoreApplication.translate("Form", u"\u5237\u53d6\u6b21\u6570\uff1a", None))
         self.repetitionsLineEdit_clear.setText(QCoreApplication.translate("Form", u"6", None))
-        self.PlainTextEdit.setPlainText(QCoreApplication.translate("Form", u"\u52fe\u9009\u6e05300\u4f53\u529b\u4f1a\u5728\u5b8c\u6210\u5d29\u79d1\u540e\u81ea\u52a8\u627e\u5230\u6d3b\u52a8\u5173\u5361\u5237\u4e09\u6b21bouns\u5173\n"
+        self.PlainTextEdit.setPlainText(QCoreApplication.translate("Form", u"\u52fe\u9009\u6e05300\u4f53\u529b\u4f1a\u5728\u5b8c\u6210\u5d29\u79d1\u540e\u81ea\u52a8\u627e\u5230\u6d3b\u52a8\u5173\u5361\u5237\u4e09\u6b21BONUS\u5173\n"
 "\n"
-"\u5982\u679c\u60f3\u7528\u53cc\u500d\u5377\u7684\u8bdd\u628a\u5237\u53d6\u6b21\u6570\u586b\u62103", None))
+"\u5982\u679c\u60f3\u7528\u53cc\u500d\u5238\u7684\u8bdd\u628a\u5237\u53d6\u6b21\u6570\u586b\u62103\n"
+"", None))
         self.repetitionsLineEdit.setText(QCoreApplication.translate("Form", u"30", None))
         self.BodyLabel_6.setText(QCoreApplication.translate("Form", u"\u5237\u53d6\u6b21\u6570\uff1a", None))
-        self.dobleCheckBox.setText(QCoreApplication.translate("Form", u"\u53cc\u500d\u5377", None))
-        self.PlainTextEdit_2.setPlainText(QCoreApplication.translate("Form", u"\u91cd\u590d\u5237bouns\u5173\n"
+        self.doubleCheckBox.setText(QCoreApplication.translate("Form", u"\u53cc\u500d\u5238", None))
+        self.PlainTextEdit_2.setPlainText(QCoreApplication.translate("Form", u"\u91cd\u590d\u5237BOUNS\u5173\n"
 "\n"
-"\u53ef\u9009\u62e9\u662f\u5426\u4f7f\u7528\u53cc\u500d\u5377", None))
+"\u53ef\u9009\u62e9\u662f\u5426\u4f7f\u7528\u53cc\u500d\u5377\n"
+"", None))
         self.BodyLabel_4.setText(QCoreApplication.translate("Form", u"\u65e5\u5fd7", None))
         self.clearLogPushButton.setText(QCoreApplication.translate("Form", u"\u6e05\u7a7a\u65e5\u5fd7", None))
         self.logPlainTextEdit.setPlainText("")
