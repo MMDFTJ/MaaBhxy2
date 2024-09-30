@@ -35,6 +35,7 @@
 已知问题
 
 * **AEZAKMI**有几率走出跑道，跑歪就手动走进去一下叭，过完图就正常了（
+* 反馈有几率点击连接无反应，关掉重开试试（大概已经修好了，发现问题复刻流程可以的话留个issues）
 
 ## 前置说明
 
@@ -49,6 +50,10 @@ A:不知道...是通过adb模拟点击的，**用别怕，怕别用**(雾
 
 1. 这个截图([源Github地址](https://github.com/MaaXYZ/MaaFramework/tree/main/tools/ImageCropper))工具用来截取活动界面的图片，点开**./ImageCropper/截图.exe**后，填0(数字)，回车。
 2. 框错了可以点击**a**刷新截图，**长按s+回车**保存截图到./resource/image/，自动命名为活动截图.png
+
+### 安装
+直接拉取本项目就行
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E6%B4%BB%E5%8A%A8%E7%95%8C%E9%9D%A2.png)
 
 ### 初始化
 
