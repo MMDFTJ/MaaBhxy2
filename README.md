@@ -90,7 +90,7 @@ A:不知道...是通过adb模拟点击的，**用别怕，怕别用**(雾
 ![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/BHXY%E6%88%AA%E5%9B%BE.png)
 
 1. 先扫描设备，旁边有得选adb地址（一般默认就行）
-2. 点连接，然后等个3，4秒（防止没有连接上）
+2. 点连接，等待连接完成
 3. 选择要运行的任务
 4. 启动！
 
