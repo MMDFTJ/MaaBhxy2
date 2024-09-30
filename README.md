@@ -53,7 +53,7 @@ A:不知道...是通过adb模拟点击的，**用别怕，怕别用**(雾
 
 ### 安装
 直接拉取本项目就行
-![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E6%B4%BB%E5%8A%A8%E7%95%8C%E9%9D%A2.png)
+![avatar](https://github.com/MMDFTJ/MaaBhxy2/blob/main/images/%E4%B8%8B%E8%BD%BD.png)
 
 ### 初始化
 
