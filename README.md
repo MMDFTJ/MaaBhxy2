@@ -50,7 +50,7 @@ A:不知道...是通过adb模拟点击的，**用别怕，怕别用**(雾
 ### 截图.exe
 
 1. 这个截图([源Github地址](https://github.com/MaaXYZ/MaaFramework/tree/main/tools/ImageCropper))工具用来截取活动界面的图片，点开**./ImageCropper/截图.exe**后，填0(数字)，回车。
-2. 框错了可以点击**a**刷新截图，**长按s+回车**保存截图到./resource/image/，自动命名为活动截图.png
+2. 框错了可以点击**a**刷新截图，**长按s+回车**自动保存截图到./resource/image/，命名为活动截图.png
 
 ### 安装
 直接拉取本项目就行
