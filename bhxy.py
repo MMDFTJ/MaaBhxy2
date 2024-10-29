@@ -82,7 +82,7 @@ class Bhxy:
 
         allOperate.dy_crack()
 
-        allOperate.bkxh()
+        # allOperate.bkxh()
 
         if task_bool:
             allOperate.judge_if_activity()
