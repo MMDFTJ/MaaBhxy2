@@ -1,4 +1,6 @@
 # from maa.library import Library
+import time
+
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtGui import QIcon
 from ui.bhxy_UI import Ui_Form
@@ -64,6 +66,9 @@ class WorkThread(QThread):
         if self.task_type == 'start_cycle_battle':
             self.bhxy.start_cycle_battle(self.max_battle, self.double_bool)
 
+        if self.task_type == 'sleep':
+            time.sleep(7)
+
 
 class MyWindow2(QMainWindow, Ui_Form):
     text_edit_signal = Signal(str)
@@ -81,8 +86,7 @@ class MyWindow2(QMainWindow, Ui_Form):
         self.text_edit_signal.connect(lambda x: self.logPlainTextEdit.appendPlainText(x))
         self.bhxy = Bhxy(self.text_edit_signal)
         # 绑定点击事件
-        self.scanAdbPushButton.clicked.connect(self.start_threading_from_scan_adb_button)
-        self.adbConnectPushButton.clicked.connect(self.connect_adb_button)
+        self.scanAdbPushButton.clicked.connect(self.scan_adb)
         self.startPushButton.clicked.connect(self.start_task)
         self.clearLogPushButton.clicked.connect(self.clear_log)
         self.screenshotPushButton.clicked.connect(self.open_screenshot)
@@ -92,8 +96,15 @@ class MyWindow2(QMainWindow, Ui_Form):
         self.tasksComboBox.currentIndexChanged.connect(self.update_setting_scroll_area)
         # 往任务列表中添加任务名字
         self.tasksComboBox.addItems(['清日常', '重复刷关卡'])
+        # 初始化threading
+        # self.init_threading()
+        # 初始化刷新adb连接列表
+        self.scan_adb()
 
-    def start_threading_from_scan_adb_button(self):
+    def init_threading(self):
+        self.thread = WorkThread(self.bhxy)
+
+    def scan_adb(self):
         """
         从线程中启动扫描adb接口，防止点击扫描后界面卡死
 
@@ -105,6 +116,7 @@ class MyWindow2(QMainWindow, Ui_Form):
         self.thread.set_task_type('scan_adb')
         self.thread.adb_device_signal.connect(self.scan_adb_button)
         self.thread.start()
+
 
     def scan_adb_button(self, adb_device):
         """
@@ -126,7 +138,7 @@ class MyWindow2(QMainWindow, Ui_Form):
             [str(i) + ':' + self.adb_device[i].name for i in range(len(self.adb_device))])
         self.adbIpPortEditableComboBox.addItems([self.adb_device[i].address for i in range(len(self.adb_device))])
 
-    def connect_adb_button(self):
+    def connect_adb(self):
         """
         连接adb，往QThread.adb_connect_signal传递参数，用来选择用户选择的哪个接口
         Returns:
@@ -158,12 +170,13 @@ class MyWindow2(QMainWindow, Ui_Form):
         Returns:
 
         """
-        self.bhxy.tasker.set_a(0)
+        self.connect_adb()
+        time.sleep(1.5)
+        # self.bhxy.tasker.set_a(0)  不需要加，每次连接connect_adb会把set_a/self.a重置成0
         if self.tasksComboBox.currentIndex() == 0:
             task_bool = self.clearPhysicalStrengthCheckBox.isChecked()
             double_bool = self.doubleCheckBox_clear.isChecked()
             max_battle = int(self.repetitionsLineEdit_clear.text())
-            # self.thread = WorkThread(self.bhxy, task_bool, max_battle, double_bool)
             self.thread.set_task_type('start_expedition')
             self.thread.set_task_bool(task_bool)
             self.thread.set_double_bool(double_bool)
@@ -172,7 +185,6 @@ class MyWindow2(QMainWindow, Ui_Form):
         if self.tasksComboBox.currentIndex() == 1:
             double_bool = self.doubleCheckBox.isChecked()
             max_battle = int(self.repetitionsLineEdit.text())
-            # self.thread = WorkThread(self.bhxy, max_battle=max_battle, double_bool=double_bool)
             self.thread.set_task_type('start_cycle_battle')
             self.thread.set_double_bool(double_bool)
             self.thread.set_max_battle(max_battle)
