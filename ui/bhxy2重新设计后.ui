@@ -28,6 +28,13 @@
    <layout class="QGridLayout" name="gridLayout_4">
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="6">
+       <widget class="PushButton" name="stopPushButton">
+        <property name="text">
+         <string>停止</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
        <widget class="BodyLabel" name="BodyLabel">
         <property name="text">
@@ -35,10 +42,10 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="PushButton" name="scanAdbPushButton">
-        <property name="text">
-         <string>扫描设备</string>
+      <item row="0" column="3">
+       <widget class="EditableComboBox" name="adbIpPortEditableComboBox">
+        <property name="placeholderText">
+         <string>adb ip:port</string>
         </property>
        </widget>
       </item>
@@ -55,38 +62,24 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="3">
-       <widget class="EditableComboBox" name="adbIpPortEditableComboBox">
-        <property name="placeholderText">
-         <string>adb ip:port</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="4">
-       <widget class="PushButton" name="adbConnectPushButton">
-        <property name="text">
-         <string>连接</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="5">
        <widget class="BodyLabel" name="BodyLabel_2">
         <property name="text">
          <string>调度器：</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="6">
-       <widget class="PushButton" name="startPushButton">
+      <item row="0" column="1">
+       <widget class="PushButton" name="scanAdbPushButton">
         <property name="text">
-         <string>开始</string>
+         <string>刷新设备</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="7">
-       <widget class="PushButton" name="stopPushButton">
+      <item row="0" column="5">
+       <widget class="PushButton" name="startPushButton">
         <property name="text">
-         <string>停止</string>
+         <string>开始</string>
         </property>
        </widget>
       </item>
@@ -137,7 +130,7 @@
         <item row="1" column="0">
          <widget class="QStackedWidget" name="settingStackedWidget">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="page_5">
            <widget class="QWidget" name="layoutWidget_2">
@@ -267,7 +260,7 @@ PlainTextEdit:disabled {
 </string>
                </property>
                <property name="plainText">
-                <string>勾选清300体力会在完成崩科后自动找到活动关卡刷三次BONUS关
+                <string>勾选清300体力自动找到活动关卡刷三次BONUS关
 
 如果想用双倍券的话把刷取次数填成3
 </string>
