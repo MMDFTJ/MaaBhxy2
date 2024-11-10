@@ -66,9 +66,6 @@ class WorkThread(QThread):
         if self.task_type == 'start_cycle_battle':
             self.bhxy.start_cycle_battle(self.max_battle, self.double_bool)
 
-        if self.task_type == 'sleep':
-            time.sleep(7)
-
 
 class MyWindow2(QMainWindow, Ui_Form):
     text_edit_signal = Signal(str)
