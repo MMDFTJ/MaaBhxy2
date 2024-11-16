@@ -28,8 +28,8 @@
     "进入游戏": {
         "recognition": "OCR",
         "expected": "崩坏学园2",
-        "action": "Custom",
-        "custom_action": "MyAct"
+        "action": "Click",
+        "timeout": 3000
     },
     "进入": {
         "recognition": "OCR",
