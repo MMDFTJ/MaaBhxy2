@@ -7,16 +7,19 @@ from maa.resource import Resource
 from maa.controller import AdbController
 from maa.tasker import Tasker
 from maa.toolkit import Toolkit
-from maa.notification_handler import NotificationHandler
+from maa.notification_handler import NotificationHandler, NotificationType
 
 from maa.custom_action import CustomAction
 from allOperate import AllOperate
 from maa.context import Context
-
+import adbutils
+device = adbutils.device()
+device.shell('ps -ef | grep -v grep | grep com.miHoYo.HSoDv22144.uc')
 
 class MyNotificationHandler(NotificationHandler):
     def __init__(self, text_edit_signal):
         super().__init__()
+        # self.tasker = None
         self.text_edit_signal = text_edit_signal
 
     def on_raw_notification(self, msg: str, details: dict):
@@ -24,7 +27,17 @@ class MyNotificationHandler(NotificationHandler):
         print(f'返回的js数据:{details}')
         print('-' * 20)
         self.text_edit_signal.emit(f'任务名:{details.get("entry")} 执行状态:{msg.split(".")[-1]}')
+
+        if msg.split('.')[-1] == 'Starting':
+            shell_return = device.shell('ps -ef | grep -v grep | grep com.miHoYo.HSoDv22144.uc')
+            if len(shell_return) < 1:
+                self.text_edit_signal.emit('发现游戏闪退...正在重启')
+            self.tasker.post_pipeline('进入游戏')
+
         super().on_raw_notification(msg, details)
+
+    def set_task(self, tasker):
+        self.tasker = tasker
 
 
 class Bhxy:
@@ -59,7 +72,9 @@ class Bhxy:
             config=device.config,
         )
         controller.post_connection().wait()
-        self.tasker = Tasker(MyNotificationHandler(self.text_edit_signal))
+        my_notificationHandler = MyNotificationHandler(self.text_edit_signal)
+        self.tasker = Tasker(my_notificationHandler)
+        my_notificationHandler.set_task(self.tasker)
         self.tasker.bind(self.resource, controller)
         # self.tasker.set_save_draw(True)
         if not self.tasker.inited:
