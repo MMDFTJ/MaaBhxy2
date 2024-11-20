@@ -13,8 +13,10 @@ from maa.custom_action import CustomAction
 from allOperate import AllOperate
 from maa.context import Context
 import adbutils
+
 device = adbutils.device()
 device.shell('ps -ef | grep -v grep | grep com.miHoYo.HSoDv22144.uc')
+
 
 class MyNotificationHandler(NotificationHandler):
     def __init__(self, text_edit_signal):
@@ -32,12 +34,16 @@ class MyNotificationHandler(NotificationHandler):
             shell_return = device.shell('ps -ef | grep -v grep | grep com.miHoYo.HSoDv22144.uc')
             if len(shell_return) < 1:
                 self.text_edit_signal.emit('发现游戏闪退...正在重启')
-            self.tasker.post_pipeline('进入游戏')
+                self.tasker.set_a(1)
+                self.tasker.bind(self.resource,self.controller)
+                self.tasker.post_pipeline('进入游戏')
 
         super().on_raw_notification(msg, details)
 
-    def set_task(self, tasker):
+    def set_task(self, tasker, resource, controller):
         self.tasker = tasker
+        self.resource = resource
+        self.controller = controller
 
 
 class Bhxy:
@@ -64,18 +70,18 @@ class Bhxy:
     def connect_adb(self, adb_devices):
         self.text_edit_signal.emit('连接ing...')
         device = adb_devices
-        controller = AdbController(
+        self.controller = AdbController(
             adb_path=device.adb_path,
             address=device.address,
             screencap_methods=device.screencap_methods,
             input_methods=device.input_methods,
             config=device.config,
         )
-        controller.post_connection().wait()
+        self.controller.post_connection().wait()
         my_notificationHandler = MyNotificationHandler(self.text_edit_signal)
         self.tasker = Tasker(my_notificationHandler)
-        my_notificationHandler.set_task(self.tasker)
-        self.tasker.bind(self.resource, controller)
+        my_notificationHandler.set_task(self.tasker, self.resource, self.controller)
+        self.tasker.bind(self.resource, self.controller)
         # self.tasker.set_save_draw(True)
         if not self.tasker.inited:
             print("Failed to init MAA.")
@@ -122,9 +128,9 @@ class Bhxy:
 
 class AEZAKMIAction(CustomAction):
     def run(
-        self,
-        context: Context,
-        argv: CustomAction.RunArg,
+            self,
+            context: Context,
+            argv: CustomAction.RunArg,
     ) -> CustomAction.RunResult:
         print(
             f"on MyAction.run, context: {context}, task_detail: {argv.task_detail}, action_name: {argv.custom_action_name}, action_param: {argv.custom_action_param}, box: {argv.box}, reco_detail: {argv.reco_detail}"
@@ -145,9 +151,9 @@ class AEZAKMIAction(CustomAction):
 
 class GameTesterAction(CustomAction):
     def run(
-        self,
-        context: Context,
-        argv: CustomAction.RunArg,
+            self,
+            context: Context,
+            argv: CustomAction.RunArg,
     ) -> CustomAction.RunResult:
         print(
             f"on MyAction.run, context: {context}, task_detail: {argv.task_detail}, action_name: {argv.custom_action_name}, action_param: {argv.custom_action_param}, box: {argv.box}, reco_detail: {argv.reco_detail}"
