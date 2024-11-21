@@ -35,7 +35,7 @@ class MyNotificationHandler(NotificationHandler):
             if len(shell_return) < 1:
                 self.text_edit_signal.emit('发现游戏闪退...正在重启')
                 self.tasker.set_a(1)
-                self.tasker.bind(self.resource,self.controller)
+                self.tasker.bind(self.resource, self.controller)
                 self.tasker.post_pipeline('进入游戏')
 
         super().on_raw_notification(msg, details)
