@@ -14,8 +14,8 @@ from allOperate import AllOperate
 from maa.context import Context
 import adbutils
 
-device = adbutils.device()
-device.shell('ps -ef | grep -v grep | grep com.miHoYo.HSoDv22144.uc')
+adbutils_device = adbutils.device()
+adbutils_device.shell('ps -ef | grep -v grep | grep com.miHoYo.HSoDv22144.uc')
 
 
 class MyNotificationHandler(NotificationHandler):
@@ -31,7 +31,7 @@ class MyNotificationHandler(NotificationHandler):
         self.text_edit_signal.emit(f'任务名:{details.get("entry")} 执行状态:{msg.split(".")[-1]}')
 
         if msg.split('.')[-1] == 'Starting':
-            shell_return = device.shell('ps -ef | grep -v grep | grep com.miHoYo.HSoDv22144.uc')
+            shell_return = adbutils_device.shell('ps -ef | grep -v grep | grep com.miHoYo.HSoDv22144.uc')
             if len(shell_return) < 1:
                 self.text_edit_signal.emit('发现游戏闪退...正在重启')
                 self.tasker.set_a(1)
