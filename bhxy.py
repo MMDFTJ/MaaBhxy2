@@ -34,16 +34,8 @@ class MyNotificationHandler(NotificationHandler):
             shell_return = adbutils_device.shell('ps -ef | grep -v grep | grep com.miHoYo.HSoDv22144.uc')
             if len(shell_return) < 1:
                 self.text_edit_signal.emit('发现游戏闪退...正在重启')
-                self.tasker.set_a(1)
-                self.tasker.bind(self.resource, self.controller)
-                self.tasker.post_pipeline('进入游戏')
-
         super().on_raw_notification(msg, details)
 
-    def set_task(self, tasker, resource, controller):
-        self.tasker = tasker
-        self.resource = resource
-        self.controller = controller
 
 
 class Bhxy:
@@ -80,7 +72,6 @@ class Bhxy:
         self.controller.post_connection().wait()
         my_notificationHandler = MyNotificationHandler(self.text_edit_signal)
         self.tasker = Tasker(my_notificationHandler)
-        my_notificationHandler.set_task(self.tasker, self.resource, self.controller)
         self.tasker.bind(self.resource, self.controller)
         # self.tasker.set_save_draw(True)
         if not self.tasker.inited:
