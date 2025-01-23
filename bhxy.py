@@ -88,11 +88,11 @@ class Bhxy:
     def start_expedition(self, task_bool=False, max_battle=3, double_bool=True):
         allOperate = AllOperate(self.tasker, self.text_edit_signal)
 
-        allOperate.expedition()
+        allOperate.expedition()  # 使魔探险
 
-        allOperate.buy_gift_pack()
+        allOperate.buy_gift_pack()  # 购买礼包
 
-        allOperate.dy_crack()
+        allOperate.dy_crack()  # 多元裂缝
 
         # allOperate.bkxh()
 
@@ -101,9 +101,9 @@ class Bhxy:
             allOperate.enter_activity()
             allOperate.cycle_battle(max_battle, double_bool)
 
-        allOperate.community()
+        allOperate.community()  # 领取社团体力
 
-        allOperate.get_daily_rewards()
+        allOperate.get_daily_rewards()  # 领取每日奖励
 
     def start_cycle_battle(self, max_battle=3, double_bool=True):
         allOperate = AllOperate(self.tasker, self.text_edit_signal)

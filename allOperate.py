@@ -58,6 +58,10 @@ class AllOperate:
             else:
                 break
         self.tasker.post_pipeline("点击存在感").wait()
+
+        for i in range(4):
+            self.tasker.post_pipeline("下边往上拉长距离").wait()
+
         while True:
             if not self.tasker.post_pipeline(task_name).wait().get().nodes:
                 # 这里需要向下滑动一点点让前往出来
@@ -75,7 +79,23 @@ class AllOperate:
         Returns:
 
         """
-        self.enter_presence("战力补强")
+        # self.enter_presence("战力补强")
+        # for i in range(3):
+        #     self.tasker.post_pipeline("滚动到下面").wait()
+        #     if self.tasker.post_pipeline("点击零时馈礼").wait().get().nodes:
+        #         if self.tasker.post_pipeline("点击是否购买零时馈礼").wait().get().nodes:
+        #             self.tasker.post_pipeline("购买").wait()
+        #             self.tasker.post_pipeline("确定").wait()
+        #             break
+        self.tasker.post_pipeline("商店").wait()
+        self.tasker.post_pipeline("确认").wait()
+        self.tasker.post_pipeline("进入崩坏屋").wait()
+        self.tasker.post_pipeline("共鸣屋").wait()
+        self.tasker.post_pipeline("刷新共鸣屋和购买零时之种").wait()
+        self.tasker.post_pipeline("确定").wait()
+        self.tasker.post_pipeline("从共鸣屋点击箭头返回").wait()
+        self.tasker.post_pipeline("点击礼包商店").wait()
+        self.tasker.post_pipeline("吼美礼包").wait()
         for i in range(3):
             self.tasker.post_pipeline("滚动到下面").wait()
             if self.tasker.post_pipeline("点击零时馈礼").wait().get().nodes:
@@ -83,12 +103,6 @@ class AllOperate:
                     self.tasker.post_pipeline("购买").wait()
                     self.tasker.post_pipeline("确定").wait()
                     break
-        self.tasker.post_pipeline("商店").wait()
-        self.tasker.post_pipeline("确认").wait()
-        self.tasker.post_pipeline("进入崩坏屋").wait()
-        self.tasker.post_pipeline("共鸣屋").wait()
-        self.tasker.post_pipeline("刷新共鸣屋和购买零时之种").wait()
-        self.tasker.post_pipeline("确定").wait()
 
     def judge_if_activity(self):
         """

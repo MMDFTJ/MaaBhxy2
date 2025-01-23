@@ -294,6 +294,22 @@
             220
         ]
     },
+    "下边往上拉长距离": {
+        "action": "Swipe",
+        "post_delay": 2000,
+        "begin": [
+            191,
+            614,
+            1089,
+            106
+        ],
+        "end": [
+            191,
+            280,
+            1089,
+            440
+        ]
+    },
     "点击一键领取": {
         "recognition": "TemplateMatch",
         "template": "一键领取.png",
