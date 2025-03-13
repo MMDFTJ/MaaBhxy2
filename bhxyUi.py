@@ -104,7 +104,7 @@ class MyWindow2(QMainWindow, Ui_Form):
     def scan_adb(self):
         """
         从线程中启动扫描adb接口，防止点击扫描后界面卡死
-
+        如果模拟器还没启动，这里会抛错
         self.thread.adb_device_signal.connect(self.scan_adb_button)是把signal.emit参数返回给self.scan_adb_button
         Returns:
 

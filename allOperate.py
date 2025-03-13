@@ -59,17 +59,14 @@ class AllOperate:
                 break
         self.tasker.post_pipeline("点击存在感").wait()
 
-        for i in range(4):
-            self.tasker.post_pipeline("下边往上拉长距离").wait()
-
         while True:
             if not self.tasker.post_pipeline(task_name).wait().get().nodes:
                 # 这里需要向下滑动一点点让前往出来
-                self.tasker.post_pipeline("下边往上拉").wait()
+                self.tasker.post_pipeline("下边往上拉长距离").wait()
             else:
                 while True:
                     if self.tasker.post_pipeline(task_name).wait().get().nodes:
-                        self.tasker.post_pipeline("下边往上拉").wait()
+                        self.tasker.post_pipeline("下边往上拉长距离").wait()
                     else:
                         return
 

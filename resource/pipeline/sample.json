@@ -308,7 +308,8 @@
             280,
             1089,
             440
-        ]
+        ],
+        "duration": 1500
     },
     "点击一键领取": {
         "recognition": "TemplateMatch",

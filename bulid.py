@@ -42,5 +42,6 @@ PyInstaller.__main__.run([
     f'--add-data={add_data_param}',
     f'--add-data={add_data_param2}',
     '--clean',
-    f'--icon={add_data_param3}'
+    f'--icon={add_data_param3}',
+    f'--noconsole'
 ])
